@@ -1,0 +1,2 @@
+n_estimators,max_depth,min_samples_leaf,max_features,AUC_validacion,umbral,percentil_umbral,tiempo_s,tiempo_prediccion_s,n_combinaciones
+200,2,5,sqrt,0.6762763504611331,0.4016555621787814,0.5408163265306123,84.4770917892456,0.010529449989553541,48

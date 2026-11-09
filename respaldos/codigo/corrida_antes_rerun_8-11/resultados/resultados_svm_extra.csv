@@ -1,0 +1,2 @@
+C,gamma,AUC_validacion,umbral,percentil_umbral,tiempo_s,tiempo_prediccion_s,n_combinaciones,vectores_soporte
+0.1,0.1,0.6999290862590095,-0.378562638085374,0.6224489795918368,0.9557852745056152,0.005718885001260787,20,236

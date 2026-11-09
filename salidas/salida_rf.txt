@@ -1,0 +1,58 @@
+Entrenamiento: 1990-01 a 2014-09 (297 meses, 41 caidas)
+Prueba:        2015-01 a 2025-09 (129 meses, 21 caidas)
+
+Combinaciones evaluadas: 48 (240 ajustes)
+Mejor combinacion: {'max_depth': 2, 'max_features': 'sqrt', 'min_samples_leaf': 5, 'n_estimators': 200}
+  AUC de validacion = 0.676 (+/- 0.197)  |  tiempo de entrenamiento: 122.58 s
+
+Sensibilidad del AUC de validacion a cada hiperparametro:
+  hiperparametro valor  AUC_val_prom  AUC_val_min  AUC_val_max
+    n_estimators   200         0.579        0.481        0.676
+    n_estimators   500         0.586        0.493        0.674
+       max_depth     2         0.582        0.483        0.676
+       max_depth     3         0.586        0.481        0.665
+       max_depth     5         0.581        0.481        0.634
+       max_depth  None         0.580        0.481        0.633
+min_samples_leaf     5         0.612        0.547        0.676
+min_samples_leaf    10         0.600        0.563        0.633
+min_samples_leaf    20         0.535        0.481        0.589
+    max_features  sqrt         0.619        0.566        0.676
+    max_features  None         0.546        0.481        0.583
+
+Rango del AUC de validacion en toda la grilla: 0.481 a 0.676
+
+Umbral elegido (cuantil, max F1 out-of-fold): 0.4017  |  percentil de corte 0.541  |  meses marcados: 80.0% out-of-fold, 46.1% en entrenamiento
+  Out-of-fold: 245 meses, 38 caidas | AUC 0.607 | F1 0.316 | Precision 0.189 | Recall 0.974
+  Percentiles de corte con F1 OOF a menos de 0.02 del maximo: 0.286 a 0.582 (rango ancho = corte poco estable)
+  Percentil de corte optimo de cada vuelta por separado (estabilidad):
+               validacion   n  caidas  percentil_vuelta  F1_vuelta
+vuelta                                                            
+1       1994-05 a 1998-05  49       1             0.837      0.091
+2       1998-06 a 2002-06  49      16             0.582      0.533
+3       2002-07 a 2006-07  49       3             0.701      0.231
+4       2006-08 a 2010-08  49      15             0.714      0.564
+5       2010-09 a 2014-09  49       3             0.616      0.146
+
+Desempeno del Random Forest:
+           Entrenamiento  Prueba  Brecha (train - test)
+AUC                0.892   0.568                  0.324
+Precision          0.292   0.208                  0.084
+Recall             0.976   0.524                  0.452
+F1                 0.449   0.297                  0.152
+
+Matriz de confusion en prueba (filas = real, columnas = predicho):
+        Pred 0  Pred 1
+Real 0      66      42
+Real 1      10      11
+
+Tiempo de prediccion sobre la prueba (129 meses): 15.0 ms
+
+Importancia por permutacion (muestra de prueba) y por impureza (referencia):
+            Caida del AUC  Desv. est.  Importancia impureza (MDI)
+vix_fin             0.060       0.056                       0.307
+baa10y_fin          0.012       0.034                       0.298
+mom_12m             0.007       0.022                       0.221
+cape_lag3           0.003       0.012                       0.120
+t10y3m_fin          0.001       0.014                       0.054
+
+Guardados: resultados_rf.csv, resultados_rf_extra.csv, sensibilidad_rf.csv, importancia_rf.csv, puntajes_rf.csv

@@ -1,0 +1,64 @@
+Entrenamiento: 1990-01 a 2014-09 (297 meses, 41 caidas)
+Prueba:        2015-01 a 2025-09 (129 meses, 21 caidas)
+
+scale_pos_weight del modelo final = 256/41 = 6.24 (en cada vuelta se recalcula con su propio entrenamiento)
+  vuelta 1: 46/3 = 15.33
+  vuelta 2: 95/3 = 31.67
+  vuelta 3: 130/17 = 7.65
+  vuelta 4: 173/23 = 7.52
+  vuelta 5: 207/38 = 5.45
+
+Combinaciones evaluadas: 32 (160 ajustes)
+Mejor combinacion: {'learning_rate': 0.01, 'max_depth': 2, 'n_estimators': 300, 'reg_lambda': 10, 'subsample': 0.7}
+  AUC de validacion = 0.638 (+/- 0.137)  |  tiempo de entrenamiento: 36.89 s
+
+Sensibilidad del AUC de validacion a cada hiperparametro:
+hiperparametro valor  AUC_val_prom  AUC_val_min  AUC_val_max
+ learning_rate  0.01         0.597        0.546        0.638
+ learning_rate   0.1         0.551        0.501        0.603
+  n_estimators   100         0.576        0.540        0.626
+  n_estimators   300         0.572        0.501        0.638
+     max_depth     2         0.570        0.501        0.638
+     max_depth     3         0.579        0.518        0.634
+     subsample   0.7         0.584        0.501        0.638
+     subsample   1.0         0.564        0.528        0.626
+    reg_lambda     1         0.561        0.501        0.607
+    reg_lambda    10         0.587        0.543        0.638
+
+Rango del AUC de validacion en toda la grilla: 0.501 a 0.638
+
+Umbral elegido (cuantil, max F1 out-of-fold): 0.5032  |  percentil de corte 0.745  |  meses marcados: 44.1% out-of-fold, 25.6% en entrenamiento
+  Out-of-fold: 245 meses, 38 caidas | AUC 0.657 | F1 0.370 | Precision 0.250 | Recall 0.711
+  Percentiles de corte con F1 OOF a menos de 0.02 del maximo: 0.699 a 0.786 (rango ancho = corte poco estable)
+  Percentil de corte optimo de cada vuelta por separado (estabilidad):
+               validacion   n  caidas  percentil_vuelta  F1_vuelta
+vuelta                                                            
+1       1994-05 a 1998-05  49       1             0.918      0.167
+2       1998-06 a 2002-06  49      16             0.786      0.627
+3       2002-07 a 2006-07  49       3             0.694      0.222
+4       2006-08 a 2010-08  49      15             0.673      0.558
+5       2010-09 a 2014-09  49       3             0.649      0.150
+
+Desempeno del XGBoost:
+           Entrenamiento  Prueba  Brecha (train - test)
+AUC                0.930   0.558                  0.373
+Precision          0.487   0.163                  0.324
+Recall             0.902   0.333                  0.569
+F1                 0.632   0.219                  0.414
+
+Matriz de confusion en prueba (filas = real, columnas = predicho):
+        Pred 0  Pred 1
+Real 0      72      36
+Real 1      14       7
+
+Tiempo de prediccion sobre la prueba (129 meses): 1.6 ms
+
+Importancia por permutacion (muestra de prueba) y por ganancia (referencia):
+            Caida del AUC  Desv. est.  Importancia ganancia (XGB)
+vix_fin             0.054       0.041                       0.201
+baa10y_fin          0.026       0.040                       0.320
+cape_lag3           0.014       0.006                       0.123
+mom_12m             0.005       0.016                       0.218
+t10y3m_fin         -0.014       0.026                       0.137
+
+Guardados: resultados_xgb.csv, resultados_xgb_extra.csv, sensibilidad_xgb.csv, importancia_xgb.csv, puntajes_xgb.csv

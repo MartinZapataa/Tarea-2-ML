@@ -1,0 +1,54 @@
+Entrenamiento: 1990-01 a 2014-09 (297 meses, 41 caidas)
+Prueba:        2015-01 a 2025-09 (129 meses, 21 caidas)
+
+Sensibilidad a K (AUC promedio en los 5 bloques de validacion):
+ K  AUC entrenamiento  AUC validacion  Desv. validacion
+ 1              1.000           0.480             0.024
+ 3              0.979           0.459             0.062
+ 5              0.967           0.511             0.116
+ 7              0.947           0.538             0.154
+11              0.941           0.586             0.191
+15              0.927           0.612             0.199
+21              0.899           0.594             0.212
+31              0.868           0.577             0.211
+41              0.802           0.646             0.156
+
+Mejor K: 41  |  AUC de validacion = 0.646 (+/- 0.156)  |  tiempo de entrenamiento: 1.29 s
+
+Umbral elegido (cuantil, max F1 out-of-fold): 0.0488  |  percentil de corte 0.357  |  meses marcados: 83.7% out-of-fold, 68.4% en entrenamiento
+  Out-of-fold: 245 meses, 38 caidas | AUC 0.526 | F1 0.313 | Precision 0.185 | Recall 1.000
+  Percentiles de corte con F1 OOF a menos de 0.02 del maximo: 0.313 a 0.510 (rango ancho = corte poco estable)
+  Percentil de corte optimo de cada vuelta por separado (estabilidad):
+               validacion   n  caidas  percentil_vuelta  F1_vuelta
+vuelta                                                            
+1       1994-05 a 1998-05  49       1             1.000      0.042
+2       1998-06 a 2002-06  49      16             0.510      0.492
+3       2002-07 a 2006-07  49       3             0.850      0.500
+4       2006-08 a 2010-08  49      15             0.714      0.558
+5       2010-09 a 2014-09  49       3             0.371      0.171
+
+Desempeno de KNN (K = 41):
+           Entrenamiento  Prueba  Brecha (train - test)
+AUC                0.839   0.619                  0.220
+Precision          0.202   0.187                  0.015
+Recall             1.000   0.952                  0.048
+F1                 0.336   0.312                  0.024
+
+Matriz de confusion en prueba (filas = real, columnas = predicho):
+        Pred 0  Pred 1
+Real 0      21      87
+Real 1       1      20
+
+Tiempo de prediccion sobre la prueba (129 meses): 2.8 ms  |  combinaciones evaluadas: 9
+
+Comparacion con K = 1 (memoriza la muestra):
+  AUC entrenamiento: 1.000
+  AUC prueba:        0.607
+
+Importancia por permutacion (muestra de prueba):
+            Caida del AUC  Desv. est.
+baa10y_fin          0.067       0.032
+mom_12m             0.061       0.049
+cape_lag3           0.054       0.035
+vix_fin             0.043       0.026
+t10y3m_fin         -0.005       0.021

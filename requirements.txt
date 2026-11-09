@@ -1,0 +1,13 @@
+# Python 3.13.2 (los resultados entregados se generaron con esta version)
+# Instalar con:  pip install -r requirements.txt
+matplotlib==3.11.2
+numpy==2.3.2
+pandas==2.3.2
+scikit-learn==1.9.1
+scipy==1.18.1
+statsmodels==0.15.0
+xgboost==3.4.1
+yfinance==1.7.0
+# Para abrir y correr tarea2.ipynb (Jupyter o "python -m nbconvert --execute")
+ipykernel==7.4.0
+nbconvert==7.17.2

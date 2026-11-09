@@ -1,0 +1,2 @@
+learning_rate,n_estimators,max_depth,subsample,reg_lambda,AUC_validacion,umbral,percentil_umbral,tiempo_s,tiempo_prediccion_s,n_combinaciones,scale_pos_weight_final
+0.01,300,2,0.7,10,0.6382295783926218,0.5032287240028381,0.7448979591836735,36.887168884277344,0.001627464999910444,32,6.2439024390243905
